@@ -1,0 +1,13 @@
+export class Priority {
+
+  id: number;
+  priorityTitle: string;
+  color: string;
+
+
+  constructor(id: number, priorityTitle: string, color: string) {
+    this.id = id;
+    this.priorityTitle = priorityTitle;
+    this.color = color;
+  }
+}
