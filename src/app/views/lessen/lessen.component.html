@@ -5,12 +5,11 @@
   </a></div>
   <div class="sidebar-wrapper">
     <ul class="nav">
-      <li class="nav-item active">
+      <li class="nav-item" *ngFor="let les of lessen">
         <a class="nav-link">
-          <p></p>
+          <p>{{les.title}}</p>
         </a>
       </li>
-
     </ul>
   </div>
 </div>
