@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Les } from '../models/Les';
+import {TestData} from '../testdata/TestData';
 
 @Injectable({
   providedIn: 'root'
@@ -6,4 +8,8 @@ import { Injectable } from '@angular/core';
 export class DataHandlerService {
 
   constructor() { }
+
+  getLessen(): Les[]{
+    return TestData.lessen;
+  }
 }

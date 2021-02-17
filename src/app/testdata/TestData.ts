@@ -7,11 +7,11 @@ export class TestData{
   static lessen: Les[] = [
     {id: 1, title: 'Onderzoekstechnieken'},
     {id: 2, title: 'Ontwerpen 3'},
-    {id: 1, title: 'Web applicaties 4'},
-    {id: 1, title: 'Projecten 2'},
-    {id: 1, title: 'Databanken 2'},
-    {id: 1, title: 'Onderzoekstechnieken'},
-    {id: 1, title: 'Communication lab'}
+    {id: 3, title: 'Web applicaties 4'},
+    {id: 4, title: 'Projecten 2'},
+    {id: 5, title: 'Databanken 2'},
+    {id: 6, title: 'Onderzoekstechnieken'},
+    {id: 7, title: 'Communication lab'}
   ];
 
   static prioriteiten: Priority[] = [

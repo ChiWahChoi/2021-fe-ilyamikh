@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {DataHandlerService} from '../../service/data-handler.service';
+import {Les} from '../../models/Les';
 
 @Component({
   selector: 'app-lessen',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LessenComponent implements OnInit {
 
-  constructor() { }
+  lessen: Les[];
+
+  constructor(private dataHandler: DataHandlerService) {
+  }
 
   ngOnInit(): void {
+    this.lessen = this.dataHandler.getLessen();
+    console.log(this.lessen);
   }
 
 }
