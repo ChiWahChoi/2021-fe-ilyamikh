@@ -1,10 +1,10 @@
 export class Les{
   id: number;
-  lesTitle: string;
+  title: string;
 
-  constructor(id: number, lesTitle: string) {
+  constructor(id: number, title: string) {
     this.id = id;
-    this.lesTitle = lesTitle;
+    this.title = title;
   }
 }
 
