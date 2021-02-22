@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="card-header card-header-warning">
+    <h4 class="card-title">Hoofdstukken om af te werken</h4>
+  </div>
+  <div class="card-body table-responsive">
+    <table class="table table-hover">
+      <thead class="text-warning">
+      <th>ID</th>
+      <th>Les</th>
+      <th>Hoofdstuk</th>
+      <th>Prioriteit</th>
+      <th>Datum</th>
+      <th>Is doorgenomen</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let hfd of hoofdstukken">
+        <td>{{hfd.id}}</td>
+        <td>{{hfd.les.title}}</td>
+        <td>{{hfd.title}}</td>
+        <td>{{hfd.priority.title}}</td>
+        <td>{{hfd.date}}</td>
+        <td>{{hfd.isDoorgenomen}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
