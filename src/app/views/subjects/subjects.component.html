@@ -4,9 +4,9 @@
   </div>
   <div class="sidebar-wrapper">
     <ul class="nav">
-      <li class="nav-item" *ngFor="let les of lessen">
+      <li class="nav-item" *ngFor="let subj of subjects" (click)="showChaptersBySubject(subj)">
         <a class="nav-link">
-          <p>{{les.title}}</p>
+          <p>{{subj.title}}</p>
         </a>
       </li>
     </ul>

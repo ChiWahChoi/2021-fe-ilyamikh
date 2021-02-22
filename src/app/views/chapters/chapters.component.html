@@ -13,13 +13,13 @@
       <th>Is doorgenomen</th>
       </thead>
       <tbody>
-      <tr *ngFor="let hfd of hoofdstukken">
-        <td>{{hfd.id}}</td>
-        <td>{{hfd.les.title}}</td>
-        <td>{{hfd.title}}</td>
-        <td>{{hfd.priority.title}}</td>
-        <td>{{hfd.date}}</td>
-        <td>{{hfd.isDoorgenomen}}</td>
+      <tr *ngFor="let ch of chapters">
+        <td>{{ch.id}}</td>
+        <td>{{ch.subject.title}}</td>
+        <td>{{ch.title}}</td>
+        <td>{{ch.priority.title}}</td>
+        <td>{{ch.date}}</td>
+        <td>{{ch.isFinished}}</td>
       </tr>
       </tbody>
     </table>

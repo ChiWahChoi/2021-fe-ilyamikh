@@ -1,4 +1,4 @@
-export class Les{
+export class Subject{
   id: number;
   title: string;
 

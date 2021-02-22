@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Les } from '../models/Les';
+import { Subject } from '../models/Subject';
 import {TestData} from '../testdata/TestData';
-import {Hoofdstuk} from '../models/Hoofdstuk';
+import {Chapter} from '../models/Chapter';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +10,17 @@ export class DataHandlerService {
 
   constructor() { }
 
-  getLessen(): Les[]{
-    return TestData.lessen;
+  getSubjects(): Subject[]{
+    return TestData.subjects;
   }
 
-  getHoofdstukken(): Hoofdstuk[]{
-    return TestData.hoofdstukken;
+  getChapters(): Chapter[]{
+    return TestData.chapters;
+  }
+
+  getChaptersBySubject(subject: Subject): Chapter[]{
+    const chapters = TestData.chapters.filter(element => element.subject === subject);
+    console.log(chapters);
+    return chapters;
   }
 }
