@@ -3,13 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SubjectComponent } from './views/subjects/subjects.component';
+import { ThemeComponent } from './views/themes/themes.component';
 import { ChapterComponent } from './views/chapters/chapters.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SubjectComponent,
+    ThemeComponent,
     ChapterComponent,
   ],
   imports: [

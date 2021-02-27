@@ -1,5 +1,5 @@
 import {Priority} from './Priority';
-import {Subject} from './Subject';
+import {Theme} from './Theme';
 
 export class Chapter {
 
@@ -7,15 +7,15 @@ export class Chapter {
   title: string;
   isFinished: boolean;
   priority?: Priority;
-  subject?: Subject;
+  theme?: Theme;
   date?: Date;
 
-  constructor(id: number, title: string, isFinished: boolean, priority?: Priority, subject?: Subject, date?: Date) {
+  constructor(id: number, title: string, isFinished: boolean, priority?: Priority, theme?: Theme, date?: Date) {
     this.id = id;
     this.title = title;
     this.isFinished = isFinished;
     this.priority = priority;
-    this.subject = subject;
+    this.theme = theme;
     this.date = date;
   }
 }

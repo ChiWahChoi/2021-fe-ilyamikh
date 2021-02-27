@@ -1,10 +1,10 @@
-import {Subject} from '../models/Subject';
+import {Theme} from '../models/Theme';
 import {Priority} from '../models/Priority';
 import {Chapter} from '../models/Chapter';
 
 export class TestData{
 
-  static subjects: Subject[] = [
+  static themes: Theme[] = [
     {id: 1, title: 'Onderzoekstechnieken'},
     {id: 2, title: 'Ontwerpen 3'},
     {id: 3, title: 'Web applicaties 4'},
@@ -28,7 +28,7 @@ export class TestData{
       title: 'Aan de slag',
       isFinished: false,
       priority: TestData.priorities[0],
-      subject: TestData.subjects[0],
+      theme: TestData.themes[0],
       date: new Date('2020-09-01')
     },
     {
@@ -36,7 +36,7 @@ export class TestData{
       title: 'Het onderzoeksprocess',
       isFinished: false,
       priority: TestData.priorities[1],
-      subject: TestData.subjects[0],
+      theme: TestData.themes[0],
       date: new Date('2020-09-14')
     },
     {
@@ -44,7 +44,7 @@ export class TestData{
       title: 'Univaritaire analyse',
       isFinished: false,
       priority: TestData.priorities[2],
-      subject: TestData.subjects[0],
+      theme: TestData.themes[0],
       date: new Date('2020-10-01')
     },
     {
@@ -52,7 +52,7 @@ export class TestData{
       title: 'De centrale limietstelling',
       isFinished: false,
       priority: TestData.priorities[3],
-      subject: TestData.subjects[0],
+      theme: TestData.themes[0],
       date: new Date('2020-10-14')
     },
     {
@@ -60,7 +60,7 @@ export class TestData{
       title: 'Introduction',
       isFinished: true,
       priority: TestData.priorities[0],
-      subject: TestData.subjects[1],
+      theme: TestData.themes[1],
       date: new Date('2020-09-01')
     },
     {
@@ -68,7 +68,7 @@ export class TestData{
       title: 'Angular basics',
       isFinished: true,
       priority: TestData.priorities[1],
-      subject: TestData.subjects[1],
+      theme: TestData.themes[1],
       date: new Date('2020-09-14')
     },
     {
@@ -76,7 +76,7 @@ export class TestData{
       title: 'Angular sevices',
       isFinished: false,
       priority: TestData.priorities[2],
-      subject: TestData.subjects[1],
+      theme: TestData.themes[1],
       date: new Date('2020-10-01')
     },
     {
@@ -84,7 +84,7 @@ export class TestData{
       title: '.Net Core backend API',
       isFinished: false,
       priority: TestData.priorities[3],
-      subject: TestData.subjects[1],
+      theme: TestData.themes[1],
       date: new Date('2020-10-14')
     },
     {
@@ -92,7 +92,7 @@ export class TestData{
       title: 'Praktische info',
       isFinished: false,
       priority: TestData.priorities[0],
-      subject: TestData.subjects[4],
+      theme: TestData.themes[4],
       date: new Date('2020-09-01')
     },
     {
@@ -100,7 +100,7 @@ export class TestData{
       title: 'SQl Review',
       isFinished: true,
       priority: TestData.priorities[0],
-      subject: TestData.subjects[4],
+      theme: TestData.themes[4],
       date: new Date('2020-09-14')
     },
     {
@@ -108,7 +108,7 @@ export class TestData{
       title: 'SQL Advanced',
       isFinished: true,
       priority: TestData.priorities[2],
-      subject: TestData.subjects[4],
+      theme: TestData.themes[4],
       date: new Date('2020-10-01')
     }
   ];

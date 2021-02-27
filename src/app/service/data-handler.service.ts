@@ -1,25 +1,28 @@
 import { Injectable } from '@angular/core';
-import { Subject } from '../models/Subject';
+import { Theme } from '../models/Theme';
 import {TestData} from '../testdata/TestData';
 import {Chapter} from '../models/Chapter';
+import {Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataHandlerService {
 
+  chaptersSubject = new Subject<Chapter[]>();
+
   constructor() { }
 
-  getSubjects(): Subject[]{
-    return TestData.subjects;
+  getThemes(): Theme[]{
+    return TestData.themes;
   }
 
   getChapters(): Chapter[]{
     return TestData.chapters;
   }
 
-  getChaptersBySubject(subject: Subject): Chapter[]{
-    const chapters = TestData.chapters.filter(element => element.subject === subject);
+  getChaptersByTheme(theme: Theme): Chapter[]{
+    const chapters = TestData.chapters.filter(element => element.theme === theme);
     console.log(chapters);
     return chapters;
   }

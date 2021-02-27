@@ -1,4 +1,4 @@
-export class Subject{
+export class Theme{
   id: number;
   title: string;
 
