@@ -9,8 +9,8 @@ import {BehaviorSubject, Subject} from 'rxjs';
 })
 export class DataHandlerService {
 
-  chaptersSubject = new BehaviorSubject<Chapter[]>(TestData.chapters);
-  themeSubject = new BehaviorSubject<Theme[]>(TestData.themes);
+  public chaptersSubject$ = new BehaviorSubject<Chapter[]>(TestData.chapters);
+  public themeSubject$ = new BehaviorSubject<Theme[]>(TestData.themes);
 
   constructor() {
 
@@ -27,6 +27,6 @@ export class DataHandlerService {
 */
 
   fillChaptersByTheme(theme: Theme){
-    this.chaptersSubject.next(TestData.chapters.filter(element => element.theme === theme));
+    this.chaptersSubject$.next(TestData.chapters.filter(element => element.theme === theme));
   }
 }
