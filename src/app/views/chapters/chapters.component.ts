@@ -14,7 +14,7 @@ export class ChapterComponent implements OnInit {
   constructor(private dataHandlerService: DataHandlerService ) { }
 
   ngOnInit(): void {
-    this.chapters = this.dataHandlerService.getChapters();
+    this.dataHandlerService.chaptersSubject.subscribe(chapters => this.chapters = chapters);
   }
 
 }

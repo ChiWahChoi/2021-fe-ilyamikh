@@ -11,19 +11,19 @@ export class DataHandlerService {
 
   chaptersSubject = new Subject<Chapter[]>();
 
-  constructor() { }
+  constructor() {
+
+  }
 
   getThemes(): Theme[]{
     return TestData.themes;
   }
 
-  getChapters(): Chapter[]{
-    return TestData.chapters;
+  fillChapters() {
+    this.chaptersSubject.next(TestData.chapters);
   }
 
-  getChaptersByTheme(theme: Theme): Chapter[]{
-    const chapters = TestData.chapters.filter(element => element.theme === theme);
-    console.log(chapters);
-    return chapters;
+  fillChaptersByTheme(theme: Theme){
+    this.chaptersSubject.next(TestData.chapters.filter(element => element.theme === theme));
   }
 }

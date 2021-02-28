@@ -19,6 +19,6 @@ export class ThemeComponent implements OnInit {
   }
 
   getChaptersByTheme(theme: Theme): void {
-    this.dataHandler.getChaptersByTheme(theme);
+    this.dataHandler.fillChaptersByTheme(theme);
   }
 }
