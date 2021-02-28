@@ -60,7 +60,7 @@ export class TestData{
       title: 'Introduction',
       isFinished: true,
       priority: TestData.priorities[0],
-      theme: TestData.themes[1],
+      theme: TestData.themes[2],
       date: new Date('2020-09-01')
     },
     {
@@ -68,7 +68,7 @@ export class TestData{
       title: 'Angular basics',
       isFinished: true,
       priority: TestData.priorities[1],
-      theme: TestData.themes[1],
+      theme: TestData.themes[2],
       date: new Date('2020-09-14')
     },
     {
@@ -76,7 +76,7 @@ export class TestData{
       title: 'Angular sevices',
       isFinished: false,
       priority: TestData.priorities[2],
-      theme: TestData.themes[1],
+      theme: TestData.themes[2],
       date: new Date('2020-10-01')
     },
     {
@@ -84,7 +84,7 @@ export class TestData{
       title: '.Net Core backend API',
       isFinished: false,
       priority: TestData.priorities[3],
-      theme: TestData.themes[1],
+      theme: TestData.themes[2],
       date: new Date('2020-10-14')
     },
     {

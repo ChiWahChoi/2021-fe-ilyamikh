@@ -15,7 +15,7 @@ export class ThemeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.themes = this.dataHandler.getThemes();
+    this.dataHandler.themeSubject.subscribe( themes => this.themes = themes);
   }
 
   getChaptersByTheme(theme: Theme): void {
