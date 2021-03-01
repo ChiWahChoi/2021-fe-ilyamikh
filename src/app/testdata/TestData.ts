@@ -110,7 +110,7 @@ export class TestData{
       priority: TestData.priorities[2],
       theme: TestData.themes[4],
       date: new Date('2020-10-01')
-    }
+    },
     {
       id: 12,
       title: 'SQL Advanced2222',
