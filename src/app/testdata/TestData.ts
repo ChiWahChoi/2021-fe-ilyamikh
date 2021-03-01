@@ -10,14 +10,14 @@ export class TestData{
     {id: 3, title: 'Web applicaties 4'},
     {id: 4, title: 'Projecten 2'},
     {id: 5, title: 'Databanken 2'},
-    {id: 6, title: 'Onderzoekstechnieken'},
+    {id: 6, title: 'IT2Talent'},
     {id: 7, title: 'Communication lab'}
   ];
 
   static priorities: Priority[] = [
     {id: 1, title: 'Niet belangerijk', color: '#e5e5e5'},
     {id: 2, title: 'Beter een keer nazien', color: '#85D1B2'},
-    {id: 3, title: 'Zeker een keer nazien en begrijpen', color: '#F1828D'},
+    {id: 3, title: 'Zeker een keer nazien en begrijpen', color: '#85D1B2'},
     {id: 4, title: 'Zeer belangerijk zeker instuderen', color: '#F1128D'}
   ];
 
@@ -111,5 +111,14 @@ export class TestData{
       theme: TestData.themes[4],
       date: new Date('2020-10-01')
     }
+    {
+      id: 12,
+      title: 'SQL Advanced2222',
+      isFinished: true,
+      priority: TestData.priorities[2],
+      theme: TestData.themes[4],
+      date: new Date('2020-10-01')
+    }
+
   ];
 }
