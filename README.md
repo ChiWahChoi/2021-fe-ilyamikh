@@ -7,6 +7,7 @@ This is an angular project for study purposes
           https://www.creative-tim.com/product/material-dashboard is the template I used
 15/02/2021 Moved to classroom repo
 
-            
+<hr>
+<p2>Backend: https://github.com/pl77711/2021-be-ilyamikh</p2>
 
 
