@@ -13,13 +13,22 @@
       <th>Is doorgenomen</th>
       </thead>
       <tbody>
-      <tr *ngFor="let ch of chapters">
-        <td>{{ch.id}}</td>
-        <td>{{ch.theme.title}}</td>
+      <tr *ngFor="let ch of chapters; let i = index">
+        <td>{{i+1}}</td>
+        <td>{{ch.theme ? ch.theme.title : 'Geen vak aanverbonden'}}</td>
         <td>{{ch.title}}</td>
-        <td>{{ch.priority.title}}</td>
-        <td>{{ch.date}}</td>
-        <td>{{ch.isFinished}}</td>
+        <td>{{ch.priority ? ch.priority.title : 'Geen prioriteit aanverbonden'}}</td>
+        <td>{{ch.date ?  (ch.date | date) : 'Geen datum aanverbonden'}}</td>
+        <td>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" value="" [checked]="ch.isFinished">
+              <span class="form-check-sign">
+                <span class="check"></span>
+               </span>
+            </label>
+          </div>
+        </td>
       </tr>
       </tbody>
     </table>

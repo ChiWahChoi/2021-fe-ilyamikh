@@ -52,8 +52,7 @@ export class TestData{
       title: 'De centrale limietstelling',
       isFinished: false,
       priority: TestData.priorities[3],
-      theme: TestData.themes[0],
-      date: new Date('2020-10-14')
+      theme: TestData.themes[0]
     },
     {
       id: 5,
@@ -76,8 +75,7 @@ export class TestData{
       title: 'Angular sevices',
       isFinished: false,
       priority: TestData.priorities[2],
-      theme: TestData.themes[2],
-      date: new Date('2020-10-01')
+      theme: TestData.themes[2]
     },
     {
       id: 8,
@@ -92,8 +90,7 @@ export class TestData{
       title: 'Praktische info',
       isFinished: false,
       priority: TestData.priorities[0],
-      theme: TestData.themes[4],
-      date: new Date('2020-09-01')
+      theme: TestData.themes[4]
     },
     {
       id: 10,
@@ -116,6 +113,12 @@ export class TestData{
       title: 'SQL Advanced2222',
       isFinished: true,
       priority: TestData.priorities[2],
+      theme: TestData.themes[4]
+    },
+    {
+      id: 13,
+      title: 'SQL Advance33333',
+      isFinished: true,
       theme: TestData.themes[4],
       date: new Date('2020-10-01')
     },
@@ -123,8 +126,13 @@ export class TestData{
       id: 13,
       title: 'SQL Advance33333',
       isFinished: true,
-      priority: TestData.priorities[2],
-      theme: TestData.themes[4],
+      priority: TestData.priorities[3],
+      date: new Date('2020-10-01')
+    },
+    {
+      id: 13,
+      title: 'SQL Advance33333',
+      isFinished: true,
       date: new Date('2020-10-01')
     }
 

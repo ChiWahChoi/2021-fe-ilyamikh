@@ -4,10 +4,13 @@
   </div>
   <div class="sidebar-wrapper">
     <ul class="nav">
-      <li class="nav-item" *ngFor="let theme of themes" (click)="getChaptersByTheme(theme)">
-        <a class="nav-link">
-          <p>{{theme.title}}</p>
-        </a>
+      <li class="nav-item pointer"
+          [class.active]="theme === selectedTheme"
+          *ngFor="let theme of themes"
+          (click)="getChaptersByTheme(theme)">
+            <a class="nav-link">
+              <p>{{theme.title}}</p>
+            </a>
       </li>
     </ul>
   </div>
