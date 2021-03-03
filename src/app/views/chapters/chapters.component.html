@@ -2,9 +2,9 @@
   <div class="card-header card-header-warning">
     <h4 class="card-title">Hoofdstukken om af te werken</h4>
   </div>
-  <div class="card-body table-responsive">
+  <div class="card-body table-responsive" *ngIf="chapters.length > 0">
 
-    <table [dataSource]="dataSource" mat-table>
+    <table [dataSource]="dataSource" mat-table matSort>
 
       <!--  color priority  -->
       <ng-container matColumnDef="color">
@@ -20,27 +20,27 @@
 
       <!--  chapter name  -->
       <ng-container matColumnDef="chapterName">
-        <th *matHeaderCellDef mat-header-cell> Chapter name </th>
+        <th *matHeaderCellDef mat-header-cell mat-sort-header> Chapter name </th>
         <td class="col-name" *matCellDef="let element" [class.completed]="element.isFinished" mat-cell>{{ element.title }}</td>
       </ng-container>
 
       <!--subject name-->
       <ng-container matColumnDef="subjectName">
-        <th *matHeaderCellDef mat-header-cell> Subject </th>
+        <th *matHeaderCellDef mat-header-cell mat-sort-header> Subject </th>
         <td class="col-sname" *matCellDef="let element"
             [ngClass]="{'completed': element.isFinished, 'novalue': element.theme == null}"
             mat-cell>
-                {{element.theme ? element.theme.title : "geen bijhorende vak"}}
+                {{element.theme ? element.theme.title : "-"}}
         </td>
       </ng-container>
 
       <!--subject name-->
       <ng-container matColumnDef="priorityName">
-        <th *matHeaderCellDef mat-header-cell> Priority </th>
+        <th *matHeaderCellDef mat-header-cell mat-sort-header> Priority </th>
         <td class="col-prio" *matCellDef="let element"
             [ngClass]="{'completed': element.isFinished, 'novalue': element.priority == null}"
             mat-cell>
-          {{element.priority ? element.priority.title : "geen bijhorende vak"}}
+          {{element.priority ? element.priority.title : "-"}}
         </td>
       </ng-container>
 
@@ -61,5 +61,10 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
+
+
   </div>
+
+  <div *ngIf="chapters.length == 0"><p class="not-found">No subjects</p></div>
+
 </div>
