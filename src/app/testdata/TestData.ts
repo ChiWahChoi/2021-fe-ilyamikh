@@ -27,7 +27,6 @@ export class TestData{
       id: 1,
       title: 'Aan de slag',
       isFinished: false,
-      priority: TestData.priorities[0],
       theme: TestData.themes[0],
       date: new Date('2020-09-01')
     },
@@ -36,15 +35,12 @@ export class TestData{
       title: 'Het onderzoeksprocess',
       isFinished: false,
       priority: TestData.priorities[1],
-      theme: TestData.themes[0],
       date: new Date('2020-09-14')
     },
     {
       id: 3,
       title: 'Univaritaire analyse',
       isFinished: false,
-      priority: TestData.priorities[2],
-      theme: TestData.themes[0],
       date: new Date('2020-10-01')
     },
     {

@@ -19,4 +19,7 @@ export class ChapterComponent implements OnInit {
     this.dataHandlerService.chaptersSubject$.subscribe(chapters => this.chapters = chapters);
   }
 
+  toggleChapterCompleted(chapter: Chapter) {
+    chapter.isFinished = !chapter.isFinished;
+  }
 }

@@ -13,16 +13,18 @@
       <th>Is doorgenomen</th>
       </thead>
       <tbody>
-      <tr *ngFor="let ch of chapters; let i = index">
+      <tr *ngFor="let chapter of chapters; let i = index" [class.completed]="chapter.isFinished">
         <td>{{i+1}}</td>
-        <td>{{ch.theme ? ch.theme.title : 'Geen vak aanverbonden'}}</td>
-        <td>{{ch.title}}</td>
-        <td>{{ch.priority ? ch.priority.title : 'Geen prioriteit aanverbonden'}}</td>
-        <td>{{ch.date ?  (ch.date | date) : 'Geen datum aanverbonden'}}</td>
+        <td [class.novalue]="chapter.theme == null">{{chapter.theme ? chapter.theme.title : 'Geen vak aanverbonden'}}</td>
+        <td>{{chapter.title}}</td>
+        <td [class.novalue]="chapter.priority == null">{{chapter.priority ? chapter.priority.title : 'Geen prioriteit aanverbonden'}}</td>
+        <td [class.novalue]="chapter.date == null">{{chapter.date ?  (chapter.date | date) : 'Geen datum aanverbonden'}}</td>
         <td>
           <div class="form-check">
             <label class="form-check-label">
-              <input class="form-check-input" type="checkbox" value="" [checked]="ch.isFinished">
+              <input class="form-check-input" type="checkbox" value=""
+                     [checked]="chapter.isFinished"
+                     (click)="toggleChapterCompleted(chapter)">
               <span class="form-check-sign">
                 <span class="check"></span>
                </span>
