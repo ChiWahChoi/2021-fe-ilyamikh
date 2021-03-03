@@ -9,25 +9,25 @@
       <!--  color priority  -->
       <ng-container matColumnDef="color">
         <th *matHeaderCellDef mat-header-cell></th>
-        <td *matCellDef="let element" [style.background-color]="getPriorityColor(element)"mat-cell></td>
+        <td class="col-color" *matCellDef="let element" [style.background-color]="getPriorityColor(element)"mat-cell></td>
       </ng-container>
 
       <!--  id of chapter  -->
       <ng-container matColumnDef="chapterId">
         <th *matHeaderCellDef mat-header-cell> No. </th>
-        <td *matCellDef="let index = index" mat-cell> {{ index + 1 }}</td>
+        <td class="col-id" *matCellDef="let index = index" mat-cell> {{ index + 1 }}</td>
       </ng-container>
 
       <!--  chapter name  -->
       <ng-container matColumnDef="chapterName">
         <th *matHeaderCellDef mat-header-cell> Chapter name </th>
-        <td *matCellDef="let element" [class.completed]="element.isFinished" mat-cell>{{ element.title }}</td>
+        <td class="col-name" *matCellDef="let element" [class.completed]="element.isFinished" mat-cell>{{ element.title }}</td>
       </ng-container>
 
       <!--subject name-->
       <ng-container matColumnDef="subjectName">
         <th *matHeaderCellDef mat-header-cell> Subject </th>
-        <td *matCellDef="let element"
+        <td class="col-sname" *matCellDef="let element"
             [ngClass]="{'completed': element.isFinished, 'novalue': element.theme == null}"
             mat-cell>
                 {{element.theme ? element.theme.title : "geen bijhorende vak"}}
@@ -37,7 +37,7 @@
       <!--subject name-->
       <ng-container matColumnDef="priorityName">
         <th *matHeaderCellDef mat-header-cell> Priority </th>
-        <td *matCellDef="let element"
+        <td class="col-prio" *matCellDef="let element"
             [ngClass]="{'completed': element.isFinished, 'novalue': element.priority == null}"
             mat-cell>
           {{element.priority ? element.priority.title : "geen bijhorende vak"}}
@@ -48,7 +48,7 @@
       <!--datum-->
       <ng-container matColumnDef="date">
         <th *matHeaderCellDef mat-header-cell> Date </th>
-        <td *matCellDef="let element" [ngClass]="{'completed': element.isFinished, 'novalue': element.date == null}"
+        <td class="col-date" *matCellDef="let element" [ngClass]="{'completed': element.isFinished, 'novalue': element.date == null}"
             mat-cell>
 
           {{element.date | date }}

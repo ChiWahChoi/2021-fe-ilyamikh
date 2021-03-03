@@ -6,3 +6,33 @@
 .novalue{
   color: #bdbdbd;
 }
+
+.col-color{
+  width: 3%;
+}
+
+.col-id{
+  width: 4%;
+  text-align: center;
+}
+
+.col-name{
+  width: 30%;
+}
+
+.col-sname{
+  width: 15%;
+}
+
+.col-prio{
+  width: 15%;
+}
+
+.col-select{
+  width: 5%;
+}
+
+.col-date{
+  width: 10%;
+}
+

@@ -34,6 +34,11 @@ export class ChapterComponent implements OnInit {
   }
 
   private getPriorityColor(chapter: Chapter) : string{
+
+    if(chapter.isFinished){
+      return '#F8F8FA';
+    }
+
     if (chapter.priority && chapter.priority.color) {
       return chapter.priority.color;
     }
