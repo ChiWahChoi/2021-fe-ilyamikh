@@ -17,6 +17,7 @@ export class ChapterComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['color', 'chapterId', 'chapterName', 'subjectName', 'priorityName', 'date'];
   dataSource: MatTableDataSource<Chapter>; //source for table
 
+
   @ViewChild(MatPaginator, {static:false})
   private paginator: MatPaginator;
 
@@ -29,9 +30,16 @@ export class ChapterComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.dataHandler.getChaptersByPriorityOrTheme$().subscribe( chaps => this.chapters = chaps);
     this.dataSource = new MatTableDataSource();
+    this.getChapters();
+    this.addTableObjects();
+  }
 
+  getChapters() {
+    this.dataHandler.getChaptersByPriorityOrTheme$().subscribe( (chaps) => {
+      this.dataSource.data = chaps;
+      this.chapters = chaps
+    });
   }
 
   toggleChapterCompleted(chapter: Chapter) {
@@ -71,7 +79,6 @@ export class ChapterComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.addTableObjects();
     this.refreshTable();
   }
 
