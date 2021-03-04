@@ -72,7 +72,7 @@ export class ChapterComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.addTableObjects();
-    this.refreshTable(); //LOST 4 HOURS hERE, bacause data need to be given after rendering table
+    this.refreshTable();
   }
 
 }
