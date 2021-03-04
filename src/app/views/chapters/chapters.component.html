@@ -2,7 +2,7 @@
   <div class="card-header card-header-warning">
     <h4 class="card-title">Hoofdstukken om af te werken</h4>
   </div>
-  <div class="card-body table-responsive" *ngIf="chapters.length > 0">
+  <div class="card-body table-responsive" *ngIf="chapters?.length > 0">
 
     <table [dataSource]="dataSource" mat-table matSort>
 
@@ -65,6 +65,6 @@
 
   </div>
 
-  <div *ngIf="chapters.length == 0"><p class="not-found">No subjects</p></div>
+  <div *ngIf="chapters?.length == 0"><p class="not-found">No subjects</p></div>
 
 </div>

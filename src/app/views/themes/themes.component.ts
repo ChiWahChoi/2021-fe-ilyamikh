@@ -17,11 +17,10 @@ export class ThemeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dataHandler.themeSubject$.subscribe(themes => this.themes = themes);
+    this.dataHandler.getAllThemes$().subscribe(themes => this.themes = themes);
   }
 
   getChaptersByTheme(theme: Theme): void {
     this.selectedTheme = theme;
-    this.dataHandler.fillChaptersByTheme(theme);
   }
 }

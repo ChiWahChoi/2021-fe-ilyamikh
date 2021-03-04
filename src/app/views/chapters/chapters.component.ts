@@ -23,22 +23,19 @@ export class ChapterComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort, {static:false})
   private sort: MatSort;
 
-
   chapters: Chapter[];
 
-  constructor(private dataHandlerService: DataHandlerService ) {
-
+  constructor(private dataHandler: DataHandlerService ) {
   }
 
   ngOnInit(): void {
-    this.dataHandlerService.chaptersSubject$.subscribe(chapters => this.chapters = chapters);
-    // dataspurce is gebruikt voor table
+    this.dataHandler.getChaptersByPriorityOrTheme$().subscribe( chaps => this.chapters = chaps);
     this.dataSource = new MatTableDataSource();
-    this.refreshTable();
+
   }
 
   toggleChapterCompleted(chapter: Chapter) {
-    chapter.isFinished = !chapter.isFinished;
+    chapter._isFinished = !chapter.isFinished;
   }
 
   private getPriorityColor(chapter: Chapter) : string{
@@ -75,6 +72,7 @@ export class ChapterComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.addTableObjects();
+    this.refreshTable(); //LOST 4 HOURS hERE, bacause data need to be given after rendering table
   }
 
 }
