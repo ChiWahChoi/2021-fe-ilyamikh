@@ -24,6 +24,15 @@ export class DataHandlerService {
     );
   }
 
+  getChaptersByTheme$(themeId?: number) : Observable<Chapter[]>{
+    return this.http.get(`${environment.apiUrl}/Chapters?themeId=${themeId}`).pipe(
+      tap(console.log),
+      shareReplay(1),
+      catchError(this.handleError),
+      map((list: any[]): Chapter[] => list.map(Chapter.fromJSON))
+    );
+  }
+
   getAllPriorities$() : Observable<Priority[]>{
     return this.http.get(`${environment.apiUrl}/Priorities/`).pipe(
       tap(console.log),
@@ -34,12 +43,14 @@ export class DataHandlerService {
   }
 
   getAllThemes$() : Observable<Theme[]>{
+
     return this.http.get(`${environment.apiUrl}/Themes/`).pipe(
       tap(console.log),
       shareReplay(1),
       catchError(this.handleError),
       map((list: any[]): Theme[] => list.map(Theme.fromJSON))
     );
+
   }
   getChapter$(chapterId: number) : Observable<Chapter>{
     return null;

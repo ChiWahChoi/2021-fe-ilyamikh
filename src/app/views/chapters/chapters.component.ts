@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {DataHandlerService} from "../../service/data-handler.service";
 import {Chapter} from 'src/app/models/Chapter';
 import {MatTableDataSource} from '@angular/material/table';
@@ -11,7 +11,7 @@ import {MatPaginator} from '@angular/material/paginator';
   templateUrl: './chapters.component.html',
   styleUrls: ['./chapters.component.css']
 })
-export class ChapterComponent implements OnInit, AfterViewInit {
+export class ChapterComponent implements OnInit {
 
 
   displayedColumns: string[] = ['color', 'chapterId', 'chapterName', 'subjectName', 'priorityName', 'date'];
@@ -24,22 +24,26 @@ export class ChapterComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort, {static:false})
   private sort: MatSort;
 
+
   chapters: Chapter[];
+
+  @Input('chapters')
+  private set setChapters(chapters: Chapter[]){
+    this.chapters = chapters;
+    this.fillTable();
+  }
+
+  @Output()
+  updateChapter = new EventEmitter<Chapter>();
+
+
 
   constructor(private dataHandler: DataHandlerService ) {
   }
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource();
-    this.getChapters();
-    this.addTableObjects();
-  }
-
-  getChapters() {
-    this.dataHandler.getChaptersByPriorityOrTheme$().subscribe( (chaps) => {
-      this.dataSource.data = chaps;
-      this.chapters = chaps
-    });
+    this.fillTable();
   }
 
   toggleChapterCompleted(chapter: Chapter) {
@@ -60,7 +64,9 @@ export class ChapterComponent implements OnInit, AfterViewInit {
 
 
   // toont chapters met bijhorende opties
-  private refreshTable() {
+  private fillTable() {
+    if(!this.dataSource){return;}
+
     this.dataSource.data = this.chapters;
     this.addTableObjects();
 
@@ -78,8 +84,8 @@ export class ChapterComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  ngAfterViewInit(): void {
-    this.refreshTable();
-  }
 
+  onChapterClick(element: Chapter) {
+      this.updateChapter.emit(element);
+  }
 }

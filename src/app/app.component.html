@@ -1,11 +1,13 @@
 <div class="wrapper ">
-  <app-subjects></app-subjects>
+  <app-subjects  (selectTheme) = "onSelectTheme($event)"
+                 [themes]="themes"></app-subjects>
   <div class="main-panel">
     <div class="content">
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-            <app-chapters></app-chapters>
+            <app-chapters [chapters]="chapters"
+                            (updateChapter)="onUpdateChapter($event)"></app-chapters>
           </div>
         </div>
       </div>
