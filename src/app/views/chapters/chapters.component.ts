@@ -4,6 +4,8 @@ import {Chapter} from 'src/app/models/Chapter';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
+import {EditChapterComponent} from '../../dialog/edit-chapter/edit-chapter.component';
+import {MatDialog} from '@angular/material/dialog';
 
 
 @Component({
@@ -38,7 +40,7 @@ export class ChapterComponent implements OnInit {
 
 
 
-  constructor(private dataHandler: DataHandlerService ) {
+  constructor(private dataHandler: DataHandlerService, private dialog: MatDialog ) {
   }
 
   ngOnInit(): void {
@@ -85,7 +87,15 @@ export class ChapterComponent implements OnInit {
   }
 
 
-  onChapterClick(element: Chapter) {
-      this.updateChapter.emit(element);
+  openEditChapterDialog(element: Chapter): void {
+    const dialogRef = this.dialog.open(EditChapterComponent, {data: [element, 'Edit chapter'], autoFocus: false});
+    dialogRef.afterClosed().subscribe(result => {
+
+      if(result as Chapter){
+        this.updateChapter.emit(element);
+        return;
+      }
+
+    });
   }
 }

@@ -34,6 +34,8 @@ export class AppComponent implements OnInit{
   }
 
   onUpdateChapter(chapter: Chapter) {
-      console.log(chapter);
+    this.dataHandlerService.updateChapter$(chapter).subscribe(() => {
+        this.dataHandlerService.getChaptersByTheme$(this.selectedTheme.id).subscribe(chaps => this.chapters = chaps);
+    });
   }
 }

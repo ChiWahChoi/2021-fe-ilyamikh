@@ -5,6 +5,9 @@ export interface PriorityJSON{
 }
 
 export class Priority {
+  private static id: number;
+  private static title: string;
+  private static color: string;
 
   constructor(private _id: number, private _title: string, private  _color: string) {}
 

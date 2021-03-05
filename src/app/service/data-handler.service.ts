@@ -3,7 +3,7 @@ import { Theme } from '../models/Theme';
 import {Chapter} from '../models/Chapter';
 import {BehaviorSubject, Observable, Subject, throwError} from 'rxjs';
 import {Priority} from '../models/Priority';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {catchError, map, shareReplay, tap} from 'rxjs/operators';
 
@@ -33,14 +33,7 @@ export class DataHandlerService {
     );
   }
 
-  getAllPriorities$() : Observable<Priority[]>{
-    return this.http.get(`${environment.apiUrl}/Priorities/`).pipe(
-      tap(console.log),
-      shareReplay(1),
-      catchError(this.handleError),
-      map((list: any[]): Priority[] => list.map(Priority.fromJSON))
-    );
-  }
+
 
   getAllThemes$() : Observable<Theme[]>{
 
@@ -50,17 +43,30 @@ export class DataHandlerService {
       catchError(this.handleError),
       map((list: any[]): Theme[] => list.map(Theme.fromJSON))
     );
+  }
+
+
+
+  updateChapter$(chapter: Chapter) : Observable<Chapter> {
+
+    console.log(chapter.toJSON());
+    return this.http.put(`${environment.apiUrl}/Chapters/${chapter.id}`, chapter.toJSON())
+      .pipe(catchError(this.handleError), map(Chapter.fromJSON))
+      .pipe(catchError((err) => {
+          return throwError(err);
+        })
+      );
 
   }
+
+
   getChapter$(chapterId: number) : Observable<Chapter>{
     return null;
   }
 
 
 
-  updateChapter$(chapterId: number) : void {
 
-  }
 
   deleteChapter$(chapterId: number) : void{
 
@@ -129,5 +135,27 @@ export class DataHandlerService {
       errorMessage = err;
     }
     return throwError(errorMessage);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  getAllPriorities$() : Observable<Priority[]>{
+    return this.http.get(`${environment.apiUrl}/Priorities/`).pipe(
+      tap(console.log),
+      shareReplay(1),
+      catchError(this.handleError),
+      map((list: any[]): Priority[] => list.map(Priority.fromJSON))
+    );
   }
 }

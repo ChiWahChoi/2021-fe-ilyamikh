@@ -1,0 +1,27 @@
+<mat-dialog-content>
+  <p mat-dialog-title>{{dialogTitle}}</p>
+  <mat-form-field>
+    <mat-label>Title*</mat-label>
+    <input
+      #inputTitle
+      matInput
+      (keydown.enter)="onConfirm()"
+      [(ngModel)]="tmpTitle">
+    <button
+      (click)="tmpTitle= ''" class="dialog-chapter-title"
+      *ngIf="tmpTitle.trim().length > 0" aria-label="Clear"  mat-button mat-icon-button matSuffix>
+      <mat-icon>clear</mat-icon>
+    </button>
+  </mat-form-field>
+</mat-dialog-content>
+
+
+<mat-dialog-actions>
+  <button
+    (click)="onConfirm()" [disabled]="inputTitle.value.trim().length==0"
+    color="primary"
+    mat-raised-button>  <!-- als titel empty is cancel knop is niet actief -->
+    Save
+  </button>
+  <button (click)="onCancel()" mat-raised-button>Cancel</button>
+</mat-dialog-actions>

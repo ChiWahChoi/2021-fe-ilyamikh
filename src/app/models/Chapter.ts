@@ -13,7 +13,7 @@ interface ChapterJSON {
 export class Chapter {
 
   constructor(private _id: number,
-              private _title: string,
+              public _title: string,
               public _isFinished: boolean,
               private _priority?: Priority,
               private _theme?: Theme,
@@ -31,6 +31,17 @@ export class Chapter {
       new Date(json.date));
 
     return chapter;
+  }
+
+  toJSON(): ChapterJSON {
+    return <ChapterJSON>{
+      id: this.id,
+      title: this.title,
+      isFinished: this.isFinished,
+      priority: this.priority.toJSON(),
+      theme: this.theme.toJSON(),
+      date: this.date.toISOString()
+    };
   }
 
 

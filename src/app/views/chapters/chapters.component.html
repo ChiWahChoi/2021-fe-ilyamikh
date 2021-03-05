@@ -23,7 +23,8 @@
         <th *matHeaderCellDef mat-header-cell mat-sort-header> Chapter name </th>
         <td class="col-name" *matCellDef="let element"
             [class.completed]="element.isFinished" class="col-title pointer" mat-cell
-            (click)="onChapterClick(element)">{{ element.title }}</td>
+            (click)="openEditChapterDialog(element)"
+        >{{ element.title }}</td>
       </ng-container>
 
       <!--subject name-->
