@@ -2,6 +2,8 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {DataHandlerService} from '../../service/data-handler.service';
 import {Chapter} from '../../models/Chapter';
+import {Theme} from '../../models/Theme';
+import {Priority} from '../../models/Priority';
 
 @Component({
   selector: 'app-edit-chapter',
@@ -19,8 +21,11 @@ export class EditChapterComponent implements OnInit {
 
   dialogTitle: string;
   chapter: Chapter;
-
+  themes: Theme[];
+  priorities: Priority[];
   tmpTitle: string;
+  tmpTheme: Theme;
+  tmpPriority: Priority;
 
   ngOnInit(): void {
     this.chapter = this.data[0];
@@ -28,10 +33,17 @@ export class EditChapterComponent implements OnInit {
 
     console.log(this.chapter)
     this.tmpTitle = this.chapter._title;
+    this.tmpTheme = this.chapter._theme;
+    this.tmpPriority = this.chapter._priority;
+    this.dataHandler.getAllThemes$().subscribe(themes => this.themes = themes);
+    this.dataHandler.getAllPriorities$().subscribe(prios => this.priorities = prios);
   }
 
   onConfirm() {
     this.chapter._title = this.tmpTitle;
+    this.chapter._theme = this.tmpTheme;
+    this.chapter._priority = this.tmpPriority;
+
     this.dialogRef.close(this.chapter);
   }
 

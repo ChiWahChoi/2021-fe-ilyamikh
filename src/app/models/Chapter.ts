@@ -15,9 +15,9 @@ export class Chapter {
   constructor(private _id: number,
               public _title: string,
               public _isFinished: boolean,
-              private _priority?: Priority,
-              private _theme?: Theme,
-              private _date?: Date) {
+              public _priority?: Priority,
+              public _theme?: Theme,
+              public _date?: Date) {
 
   }
 
@@ -26,8 +26,8 @@ export class Chapter {
       json.id,
       json.title,
       json.isFinished,
-      Priority.fromJSON(json.priority),
-      Theme.fromJSON(json.theme),
+      json.priority === null? null : Priority.fromJSON(json.priority),
+      json.theme === null ? null : Theme.fromJSON(json.theme),
       new Date(json.date));
 
     return chapter;
@@ -38,9 +38,9 @@ export class Chapter {
       id: this.id,
       title: this.title,
       isFinished: this.isFinished,
-      priority: this.priority.toJSON(),
-      theme: this.theme.toJSON(),
-      date: this.date.toISOString()
+      priority: this.priority?.toJSON(),
+      theme: this.theme?.toJSON(),
+      date: this.date?.toISOString()
     };
   }
 

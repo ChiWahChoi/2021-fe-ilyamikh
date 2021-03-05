@@ -45,7 +45,14 @@ export class DataHandlerService {
     );
   }
 
-
+  getAllPriorities$() : Observable<Priority[]>{
+    return this.http.get(`${environment.apiUrl}/Priorities/`).pipe(
+      tap(console.log),
+      shareReplay(1),
+      catchError(this.handleError),
+      map((list: any[]): Priority[] => list.map(Priority.fromJSON))
+    );
+  }
 
   updateChapter$(chapter: Chapter) : Observable<Chapter> {
 
@@ -150,12 +157,5 @@ export class DataHandlerService {
 
 
 
-  getAllPriorities$() : Observable<Priority[]>{
-    return this.http.get(`${environment.apiUrl}/Priorities/`).pipe(
-      tap(console.log),
-      shareReplay(1),
-      catchError(this.handleError),
-      map((list: any[]): Priority[] => list.map(Priority.fromJSON))
-    );
-  }
+
 }

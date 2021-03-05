@@ -16,6 +16,31 @@
 </mat-dialog-content>
 
 
+<mat-form-field>
+  <mat-label>Select subject</mat-label>
+
+  <mat-select [(ngModel)]="tmpTheme">
+    <mat-option [value]="null">no subject</mat-option>
+    <mat-option *ngFor="let theme of themes" [value]="theme">
+      {{theme.title}}
+    </mat-option>
+  </mat-select>
+
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Select subject</mat-label>
+
+  <mat-select [(ngModel)]="tmpPriority">
+    <mat-option [value]="null">no prio</mat-option>
+    <mat-option *ngFor="let prio of priorities" [value]="prio">
+      {{prio.title}}
+    </mat-option>
+  </mat-select>
+
+</mat-form-field>
+
+
 <mat-dialog-actions>
   <button
     (click)="onConfirm()" [disabled]="inputTitle.value.trim().length==0"
@@ -25,3 +50,6 @@
   </button>
   <button (click)="onCancel()" mat-raised-button>Cancel</button>
 </mat-dialog-actions>
+
+
+
