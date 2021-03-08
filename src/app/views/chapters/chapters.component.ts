@@ -38,6 +38,8 @@ export class ChapterComponent implements OnInit {
   @Output()
   updateChapter = new EventEmitter<Chapter>();
 
+  @Output()
+  deleteChapter = new EventEmitter<Chapter>();
 
 
   constructor(private dataHandler: DataHandlerService, private dialog: MatDialog ) {
@@ -91,10 +93,26 @@ export class ChapterComponent implements OnInit {
     const dialogRef = this.dialog.open(EditChapterComponent, {data: [element, 'Edit chapter'], autoFocus: false});
     dialogRef.afterClosed().subscribe(result => {
 
+      if(result === 'delete'){
+        this.deleteChapter.emit(element);
+        return;
+      }
+
       if(result as Chapter){
         this.updateChapter.emit(element);
         return;
       }
+
+      if(result === 'complete'){
+        element._isFinished = false;
+        this.updateChapter.emit(element);
+      }
+
+      if(result === 'delete'){
+        element._isFinished = true;
+        this.updateChapter.emit(element);
+      }
+
 
     });
   }

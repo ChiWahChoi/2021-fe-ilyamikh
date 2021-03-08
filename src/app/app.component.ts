@@ -38,4 +38,10 @@ export class AppComponent implements OnInit{
         this.dataHandlerService.getChaptersByTheme$(this.selectedTheme.id).subscribe(chaps => this.chapters = chaps);
     });
   }
+
+  onDeleteChapter(chapter: Chapter) {
+    this.dataHandlerService.deleteChapter$(chapter).subscribe(() => {
+      this.dataHandlerService.getChaptersByTheme$(this.selectedTheme.id).subscribe(chaps => this.chapters = chaps);
+    });
+  }
 }

@@ -18,6 +18,7 @@ import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
+import { DeleteChapterComponent } from './dialog/delete-chapter/delete-chapter.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {MatSelectModule} from '@angular/material/select';
     ThemeComponent,
     ChapterComponent,
     EditChapterComponent,
+    DeleteChapterComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,8 @@ import {MatSelectModule} from '@angular/material/select';
   ],
   providers: [],
   entryComponents:[
-    EditChapterComponent
+    EditChapterComponent,
+    DeleteChapterComponent
   ],
   bootstrap: [AppComponent]
 })

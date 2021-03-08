@@ -12,6 +12,8 @@ import {catchError, map, shareReplay, tap} from 'rxjs/operators';
 })
 export class DataHandlerService {
 
+  private _reloadChapters$ = new BehaviorSubject<boolean>(true);
+
   constructor(private http: HttpClient) {
   }
 
@@ -66,6 +68,13 @@ export class DataHandlerService {
 
   }
 
+  deleteChapter$(chapter: Chapter){
+    return this.http
+      .delete(`${environment.apiUrl}/Chapters/${chapter.id}`)
+      .pipe(tap(console.log), catchError(this.handleError));
+  }
+
+
 
   getChapter$(chapterId: number) : Observable<Chapter>{
     return null;
@@ -75,9 +84,7 @@ export class DataHandlerService {
 
 
 
-  deleteChapter$(chapterId: number) : void{
 
-  }
 
   addChapter$(chapter: Chapter) : void{
 

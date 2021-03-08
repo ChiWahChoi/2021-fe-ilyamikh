@@ -26,8 +26,8 @@ export class Chapter {
       json.id,
       json.title,
       json.isFinished,
-      json.priority === null? null : Priority.fromJSON(json.priority),
-      json.theme === null ? null : Theme.fromJSON(json.theme),
+      json.priority === null ? null : Priority.fromJSON(json.priority),
+      json.theme === null ? null  : Theme.fromJSON(json.theme),
       new Date(json.date));
 
     return chapter;
