@@ -89,30 +89,30 @@ export class ChapterComponent implements OnInit {
   }
 
 
-  openEditChapterDialog(element: Chapter): void {
-    const dialogRef = this.dialog.open(EditChapterComponent, {data: [element, 'Edit chapter'], autoFocus: false});
+  openEditChapterDialog(chapter: Chapter): void {
+    const dialogRef = this.dialog.open(EditChapterComponent, {data: [chapter, 'Edit chapter'], autoFocus: false});
     dialogRef.afterClosed().subscribe(result => {
 
+      if(result === 'complete'){
+        chapter._isFinished = true;
+        this.updateChapter.emit(chapter);
+      }
+
+      if(result === 'activate'){
+        chapter._isFinished = false;
+        this.updateChapter.emit(chapter);
+        return;
+      }
+
       if(result === 'delete'){
-        this.deleteChapter.emit(element);
+        this.deleteChapter.emit(chapter);
         return;
       }
 
       if(result as Chapter){
-        this.updateChapter.emit(element);
+        this.updateChapter.emit(chapter);
         return;
       }
-
-      if(result === 'complete'){
-        element._isFinished = false;
-        this.updateChapter.emit(element);
-      }
-
-      if(result === 'delete'){
-        element._isFinished = true;
-        this.updateChapter.emit(element);
-      }
-
 
     });
   }
