@@ -27,9 +27,12 @@ export class AppComponent implements OnInit{
 
 
   onSelectTheme(theme: Theme) {
-    this.selectedTheme = theme;
-
-    this.dataHandlerService.getChaptersByTheme$(theme.id).subscribe(chapters => this.chapters = chapters);
+    if (theme == null) {
+      this.dataHandlerService.getChaptersByPriorityOrTheme$().subscribe(chapters => this.chapters = chapters);
+    } else {
+      this.selectedTheme = theme;
+      this.dataHandlerService.getChaptersByTheme$(theme.id).subscribe(chapters => this.chapters = chapters);
+    }
   }
 
   onUpdateChapter(chapter: Chapter) {
