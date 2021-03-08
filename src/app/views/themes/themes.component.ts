@@ -19,6 +19,8 @@ export class ThemeComponent implements OnInit {
   @Input()
   selectedTheme: Theme;
 
+  private indexMouseMove: number;
+
 
 
   constructor(private dataHandler: DataHandlerService) {
@@ -35,5 +37,15 @@ export class ThemeComponent implements OnInit {
     this.selectedTheme = theme;
 
     this.selectTheme.emit(this.selectedTheme);
+  }
+
+  showEditIcon(index: number) {
+    this.indexMouseMove = index;
+    console.log(index);
+
+  }
+
+  private openEditDialog(theme: Theme){
+    console.log(theme.title);
   }
 }

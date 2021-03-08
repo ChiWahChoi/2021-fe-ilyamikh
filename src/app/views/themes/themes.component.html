@@ -16,10 +16,18 @@
 
       <li class="nav-item pointer"
           [class.active]="theme === selectedTheme"
-            *ngFor="let theme of themes"
-              (click)="getChaptersByTheme(theme)">
+            *ngFor="let theme of themes; let index = index"
+              (click)="getChaptersByTheme(theme)"
+                (mouseenter)="showEditIcon(index)"
+                  (mouseleave)="showEditIcon(null)">
             <a class="nav-link">
               <p>{{theme.title}}</p>
+              <span class="edit-category-icon-area">
+                <mat-icon *ngIf="indexMouseMove === index"
+                            (click)="$event.stopPropagation(); openEditDialog(theme)"
+                              class="edit-category-icon">edit
+                </mat-icon>
+              </span>
             </a>
       </li>
     </ul>
