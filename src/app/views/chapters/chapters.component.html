@@ -31,7 +31,8 @@
       <ng-container matColumnDef="subjectName">
         <th *matHeaderCellDef mat-header-cell mat-sort-header> Subject </th>
         <td class="col-sname" *matCellDef="let element"
-            [ngClass]="{'completed': element.isFinished, 'novalue': element.theme == null}"
+            [ngClass]="{'completed': element.isFinished, 'novalue': element.theme == null, 'link': !element.isFinished && element.theme}"
+              (click)="element.theme && onSelectTheme(element.theme)"
             mat-cell>
                 {{element.theme ? element.theme.title : "-"}}
         </td>

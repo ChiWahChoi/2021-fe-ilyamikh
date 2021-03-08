@@ -6,6 +6,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import {EditChapterComponent} from '../../dialog/edit-chapter/edit-chapter.component';
 import {MatDialog} from '@angular/material/dialog';
+import {Theme} from '../../models/Theme';
 
 
 @Component({
@@ -27,7 +28,9 @@ export class ChapterComponent implements OnInit {
   private sort: MatSort;
 
 
+
   chapters: Chapter[];
+
 
   @Input('chapters')
   private set setChapters(chapters: Chapter[]){
@@ -41,6 +44,8 @@ export class ChapterComponent implements OnInit {
   @Output()
   deleteChapter = new EventEmitter<Chapter>();
 
+  @Output()
+  selectTheme = new EventEmitter<Theme>();
 
   constructor(private dataHandler: DataHandlerService, private dialog: MatDialog ) {
   }
@@ -115,5 +120,9 @@ export class ChapterComponent implements OnInit {
       }
 
     });
+  }
+
+  onSelectTheme(theme: Theme) {
+    this.selectTheme.emit(theme);
   }
 }

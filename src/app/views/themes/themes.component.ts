@@ -15,7 +15,11 @@ export class ThemeComponent implements OnInit {
 
   @Output()
   selectTheme = new EventEmitter<Theme>();
+
+  @Input()
   selectedTheme: Theme;
+
+
 
   constructor(private dataHandler: DataHandlerService) {
   }

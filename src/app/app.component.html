@@ -1,6 +1,7 @@
 <div class="wrapper ">
   <app-subjects  (selectTheme) = "onSelectTheme($event)"
-                 [themes]="themes"></app-subjects>
+                    [themes]="themes"
+                      [selectedTheme]="selectedTheme"></app-subjects>
   <div class="main-panel">
     <div class="content">
       <div class="container-fluid">
@@ -8,7 +9,8 @@
           <div class="col-12">
             <app-chapters [chapters]="chapters"
                             (updateChapter)="onUpdateChapter($event)"
-                              (deleteChapter)="onDeleteChapter($event)"></app-chapters>
+                              (deleteChapter)="onDeleteChapter($event)"
+                                (selectTheme)="onSelectTheme($event)"></app-chapters>
           </div>
         </div>
       </div>

@@ -12,8 +12,7 @@ export class AppComponent implements OnInit{
   title = 'projectWA4';
   themes: Theme[];
   chapters: Chapter[];
-
-  private selectedTheme: Theme = null;
+  selectedTheme: Theme = null;
 
   constructor(private dataHandlerService: DataHandlerService) {
 
