@@ -2,6 +2,8 @@ import {Component, Input, OnInit, Output} from '@angular/core';
 import {DataHandlerService} from '../../service/data-handler.service';
 import {Theme} from '../../models/Theme';
 import {EventEmitter} from '@angular/core';
+import {EditThemeDialogComponent} from '../../dialog/edit-theme-dialog/edit-theme-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-subjects',
@@ -19,11 +21,17 @@ export class ThemeComponent implements OnInit {
   @Input()
   selectedTheme: Theme;
 
+  @Output()
+  deleteTheme = new EventEmitter<Theme>();
+
+  @Output()
+  updateTheme = new EventEmitter<Theme>();
+
   private indexMouseMove: number;
 
 
 
-  constructor(private dataHandler: DataHandlerService) {
+  constructor(private dialog: MatDialog, private dataHandler: DataHandlerService) {
   }
 
   ngOnInit(): void {
@@ -46,6 +54,19 @@ export class ThemeComponent implements OnInit {
   }
 
   private openEditDialog(theme: Theme){
-    console.log(theme.title);
+    const dialogRef = this.dialog.open(EditThemeDialogComponent, {data: [theme.title, "Edit vak"], width: '400px'});
+
+    dialogRef.afterClosed().subscribe( result => {
+        if(result === 'delete'){
+          this.deleteTheme.emit(theme);
+          return;
+        }
+
+        if(result as string){
+          theme._title = result as string;
+          this.updateTheme.emit(theme);
+          return;
+        }
+    });
   }
 }

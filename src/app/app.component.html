@@ -1,7 +1,9 @@
 <div class="wrapper ">
   <app-subjects  (selectTheme) = "onSelectTheme($event)"
                     [themes]="themes"
-                      [selectedTheme]="selectedTheme"></app-subjects>
+                      [selectedTheme]="selectedTheme"
+                        (deleteTheme)="onDeletetheme($event)"
+                          (updateTheme)="onUpdateTheme($event)"></app-subjects>
   <div class="main-panel">
     <div class="content">
       <div class="container-fluid">

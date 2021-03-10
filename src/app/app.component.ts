@@ -46,4 +46,17 @@ export class AppComponent implements OnInit{
       this.dataHandlerService.getChaptersByTheme$(this.selectedTheme.id).subscribe(chaps => this.chapters = chaps);
     });
   }
+
+  onDeletetheme(theme: Theme) {
+    this.dataHandlerService.deleteTheme$(theme.id).subscribe(e => {
+      this.selectedTheme = null;
+      this.onSelectTheme(this.selectedTheme);
+    })
+  }
+
+  onUpdateTheme(theme: Theme) {
+    this.dataHandlerService.updateTheme$(theme).subscribe(e => {
+      this.onSelectTheme(this.selectedTheme);
+    })
+  }
 }

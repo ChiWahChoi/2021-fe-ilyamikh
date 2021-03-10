@@ -74,7 +74,22 @@ export class DataHandlerService {
       .pipe(tap(console.log), catchError(this.handleError));
   }
 
+  deleteTheme$(themeId: number){
+    return this.http
+      .delete(`${environment.apiUrl}/Themes/${themeId}`)
+      .pipe(tap(console.log), catchError(this.handleError));
+  }
 
+
+  updateTheme$(theme: Theme){
+    console.log(theme.toJSON());
+    return this.http.put(`${environment.apiUrl}/Themes/${theme.id}`, theme.toJSON())
+      .pipe(catchError(this.handleError), map(Chapter.fromJSON))
+      .pipe(catchError((err) => {
+          return throwError(err);
+        })
+      );
+  }
 
   getChapter$(chapterId: number) : Observable<Chapter>{
     return null;
@@ -123,13 +138,9 @@ export class DataHandlerService {
     return null;
   }
 
-  deleteTheme$(themeId: number){
 
-  }
 
-  updateTheme$(themeId: number){
 
-  }
 
   /////////////////////////////////////////////////////////////
 

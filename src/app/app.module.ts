@@ -53,7 +53,8 @@ import { EditThemeDialogComponent } from './dialog/edit-theme-dialog/edit-theme-
   providers: [],
   entryComponents:[
     EditChapterComponent,
-    DeleteChapterComponent
+    DeleteChapterComponent,
+    EditThemeDialogComponent
   ],
   bootstrap: [AppComponent]
 })

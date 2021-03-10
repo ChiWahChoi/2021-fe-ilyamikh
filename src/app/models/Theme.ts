@@ -7,7 +7,7 @@ export interface ThemeJSON{
 
 export class Theme{
 
-  constructor(private _id: number, private _title: string) {}
+  constructor(public _id: number, public _title: string) {}
 
   static fromJSON(json: ThemeJSON): Theme{
     const theme = new Theme(
