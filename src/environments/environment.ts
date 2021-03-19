@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://themesapi20210303212720.azurewebsites.net/api'
+ // apiUrl: 'https://themesapi20210303212720.azurewebsites.net/api'
+  apiUrl: 'https://localhost:44358/api'
 };
 
 /*
