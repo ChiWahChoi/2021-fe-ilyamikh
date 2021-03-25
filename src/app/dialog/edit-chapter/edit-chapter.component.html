@@ -20,6 +20,7 @@
   <mat-label>Select subject</mat-label>
 
   <mat-select [(ngModel)]="tmpTheme">
+    <mat-option [value]="tmpTheme">{{tmpTheme.title}}</mat-option>
     <mat-option [value]="null">Geen vak</mat-option>
     <mat-option *ngFor="let theme of themes" [value]="theme">
       {{theme.title}}
@@ -32,6 +33,7 @@
   <mat-label>Select subject</mat-label>
 
   <mat-select [(ngModel)]="tmpPriority">
+    <mat-option [value]="tmpPriority">{{tmpPriority.title}}</mat-option>
     <mat-option [value]="null">Geen prioriteit</mat-option>
     <mat-option *ngFor="let prio of priorities" [value]="prio">
       {{prio.title}}

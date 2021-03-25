@@ -2,17 +2,18 @@
   <p mat-dialog-title>{{dialogTitle}}</p>
 
   <mat-form-field>
-    <mat-label>Naam van vak</mat-label>
+    <mat-label>Naam van de vak</mat-label>
     <input
       #inputTitle
-      matInput
-      (keydown.enter)="onConfirm()"
-      [(ngModel)]="themeTitle" />
+        matInput
+          (keydown.enter)="onConfirm()"
+            [(ngModel)]="themeTitle" />
     <button
-      *ngIf="themeTitle.trim().length > 0" class="dialog-chapter-title"
-      class="clear-icon"
-      mat-button mat-icon-button matSuffix aria-label="Clear"
-      (click)="themeTitle=''">
+      *ngIf="themeTitle.trim().length > 0"
+        class="dialog-chapter-title"
+          class="clear-icon"
+            mat-button mat-icon-button matSuffix aria-label="Clear"
+            (click)="themeTitle=''">
       <mat-icon>clear</mat-icon>
     </button>
   </mat-form-field>

@@ -19,8 +19,9 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.dataHandlerService.getAllThemes$().subscribe(themes => this.themes = themes);
     this.dataHandlerService.getChaptersByPriorityOrTheme$().subscribe(chapters => this.chapters = chapters);
+    this.dataHandlerService.getAllThemes$().subscribe(themes => this.themes = themes);
+
 
     this.onSelectTheme(null);
   }
@@ -51,12 +52,14 @@ export class AppComponent implements OnInit{
     this.dataHandlerService.deleteTheme$(theme.id).subscribe(e => {
       this.selectedTheme = null;
       this.onSelectTheme(this.selectedTheme);
-    })
+    });
   }
 
   onUpdateTheme(theme: Theme) {
-    this.dataHandlerService.updateTheme$(theme).subscribe(e => {
+    this.dataHandlerService.updateTheme$(theme).subscribe(() => {
+      this.selectedTheme = null;
       this.onSelectTheme(this.selectedTheme);
-    })
+    });
+    window.location.reload();
   }
 }

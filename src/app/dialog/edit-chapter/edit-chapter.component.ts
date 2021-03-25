@@ -30,17 +30,20 @@ export class EditChapterComponent implements OnInit {
   tmpDate: Date;
 
   ngOnInit(): void {
-    this.dataHandler.getAllThemes$().subscribe(themes => this.themes = themes);
-    this.dataHandler.getAllPriorities$().subscribe(prios => this.priorities = prios);
+
 
     this.chapter = this.data[0];
     this.dialogTitle = this.data[1];
 
-    console.log(this.chapter)
     this.tmpTitle = this.chapter._title;
-    this.tmpTheme = this.chapter._theme;
+
     this.tmpPriority = this.chapter._priority;
     this.tmpDate = this.chapter._date;
+
+    this.dataHandler.getAllThemes$().subscribe(themes => this.themes = themes);
+    this.dataHandler.getAllPriorities$().subscribe(prios => this.priorities = prios);
+
+    this.tmpTheme = this.chapter._theme;
   }
 
   onConfirm() {

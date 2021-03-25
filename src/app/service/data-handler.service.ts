@@ -81,7 +81,7 @@ export class DataHandlerService {
   }
 
 
-  updateTheme$(theme: Theme){
+  updateTheme$(theme: Theme) : Observable<Chapter>{
     console.log(theme.toJSON());
     return this.http.put(`${environment.apiUrl}/Themes/${theme.id}`, theme.toJSON())
       .pipe(catchError(this.handleError), map(Chapter.fromJSON))
