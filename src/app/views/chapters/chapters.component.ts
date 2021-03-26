@@ -47,6 +47,12 @@ export class ChapterComponent implements OnInit {
   @Output()
   selectTheme = new EventEmitter<Theme>();
 
+  @Output()
+  addChapter = new EventEmitter<Chapter>();
+
+  @Input()
+  selectedTheme: Theme;
+
   constructor(private dataHandler: DataHandlerService, private dialog: MatDialog ) {
   }
 
@@ -124,5 +130,19 @@ export class ChapterComponent implements OnInit {
 
   onSelectTheme(theme: Theme) {
     this.selectTheme.emit(theme);
+
+  }
+
+  openAddChapterDialog() {
+    const chapter = new Chapter(null, '', false, null, null);
+    console.log(chapter);
+    console.log("in open add chapter dialog");
+    const dialogRef = this.dialog.open(EditChapterComponent, {data: [chapter, 'Hoofdstuk toevoegen']});
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.addChapter.emit(chapter);
+      }
+    });
   }
 }

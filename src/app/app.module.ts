@@ -21,6 +21,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { DeleteChapterComponent } from './dialog/delete-chapter/delete-chapter.component';
 import {MatDatepicker, MatDatepickerModule} from '@angular/material/datepicker';
 import { EditThemeDialogComponent } from './dialog/edit-theme-dialog/edit-theme-dialog.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { EditThemeDialogComponent } from './dialog/edit-theme-dialog/edit-theme-
     MatOptionModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatToolbarModule
   ],
   providers: [],
   entryComponents:[

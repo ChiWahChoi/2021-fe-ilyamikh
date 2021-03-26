@@ -52,6 +52,9 @@ export class EditChapterComponent implements OnInit {
     this.chapter._priority = this.tmpPriority;
     this.chapter._date = this.tmpDate;
     this.dialogRef.close(this.chapter);
+    console.log(this.chapter);
+    console.log("in edit chapter comp constructor")
+    console.log(this.chapter);
   }
 
   onCancel() {

@@ -68,9 +68,10 @@ export class DataHandlerService {
 
   }
 
-  deleteChapter$(chapter: Chapter){
+  deleteChapter$(chapter: Chapter): Observable<Chapter>{
     return this.http
       .delete(`${environment.apiUrl}/Chapters/${chapter.id}`)
+      .pipe(catchError(this.handleError), map(Chapter.fromJSON))
       .pipe(tap(console.log), catchError(this.handleError));
   }
 
@@ -91,6 +92,19 @@ export class DataHandlerService {
       );
   }
 
+
+  addChapter$(chapter: Chapter) : Observable<Chapter> {
+    console.log(chapter);
+    return this.http.post(`${environment.apiUrl}/Chapters/`, chapter.toJSON())
+      .pipe(catchError(this.handleError), map(Chapter.fromJSON))
+      .pipe(catchError((err) => {
+          return throwError(err);
+        })
+      );
+  }
+
+
+
   getChapter$(chapterId: number) : Observable<Chapter>{
     return null;
   }
@@ -101,9 +115,7 @@ export class DataHandlerService {
 
 
 
-  addChapter$(chapter: Chapter) : void{
 
-  }
 
   /////////////////////////////////////////////////////
 

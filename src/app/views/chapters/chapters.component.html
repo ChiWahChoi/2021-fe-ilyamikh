@@ -1,7 +1,10 @@
 <div class="card">
-  <div class="card-header card-header-warning">
+
+    <mat-toolbar class="card-header card-header-warning">
     <h4 class="card-title">Hoofdstukken om af te werken</h4>
-  </div>
+      <button mat-raised-button color="accent" (click)="openAddChapterDialog()">Hoofdstuk toevoegen</button>
+    </mat-toolbar>
+
   <div class="card-body table-responsive" *ngIf=" chapters && chapters.length > 0">
 
     <table [dataSource]="dataSource" mat-table matSort>

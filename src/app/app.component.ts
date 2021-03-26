@@ -8,7 +8,7 @@ import {Chapter} from './models/Chapter';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'projectWA4';
   themes: Theme[];
   chapters: Chapter[];
@@ -38,14 +38,15 @@ export class AppComponent implements OnInit{
 
   onUpdateChapter(chapter: Chapter) {
     this.dataHandlerService.updateChapter$(chapter).subscribe(() => {
-        this.dataHandlerService.getChaptersByTheme$(this.selectedTheme.id).subscribe(chaps => this.chapters = chaps);
+      this.dataHandlerService.getChaptersByTheme$(this.selectedTheme.id).subscribe(chaps => this.chapters = chaps);
     });
   }
 
   onDeleteChapter(chapter: Chapter) {
     this.dataHandlerService.deleteChapter$(chapter).subscribe(() => {
-      this.dataHandlerService.getChaptersByTheme$(this.selectedTheme.id).subscribe(chaps => this.chapters = chaps);
+      this.dataHandlerService.getChaptersByTheme$().subscribe(chapters => this.chapters = chapters);
     });
+    window.location.reload();
   }
 
   onDeletetheme(theme: Theme) {
@@ -53,6 +54,7 @@ export class AppComponent implements OnInit{
       this.selectedTheme = null;
       this.onSelectTheme(this.selectedTheme);
     });
+
   }
 
   onUpdateTheme(theme: Theme) {
@@ -62,4 +64,13 @@ export class AppComponent implements OnInit{
     });
     window.location.reload();
   }
+
+  onAddChapter(chapter: Chapter) {
+    this.dataHandlerService.addChapter$(chapter).subscribe(result => {
+      this.dataHandlerService.getChaptersByPriorityOrTheme$().subscribe(chapters => this.chapters = chapters);
+    });
+
+  }
+
+
 }
