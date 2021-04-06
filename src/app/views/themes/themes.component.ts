@@ -27,6 +27,9 @@ export class ThemeComponent implements OnInit {
   @Output()
   updateTheme = new EventEmitter<Theme>();
 
+  @Output()
+  addTheme = new EventEmitter<string>();
+
   private indexMouseMove: number;
 
 
@@ -68,5 +71,15 @@ export class ThemeComponent implements OnInit {
           return;
         }
     });
+  }
+
+  openAddDialog() {
+    const dialogRef = this.dialog.open(EditThemeDialogComponent, {data: ['', 'Vak toevoegen'], width: '400px'});
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.addTheme.emit(result as string);
+      }
+    })
   }
 }

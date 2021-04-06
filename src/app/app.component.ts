@@ -51,8 +51,7 @@ export class AppComponent implements OnInit {
 
   onDeletetheme(theme: Theme) {
     this.dataHandlerService.deleteTheme$(theme.id).subscribe(e => {
-      this.selectedTheme = null;
-      this.onSelectTheme(this.selectedTheme);
+      this.dataHandlerService.getAllThemes$().subscribe( themes => this.themes = themes);
     });
 
   }
@@ -73,4 +72,9 @@ export class AppComponent implements OnInit {
   }
 
 
+  onAddTheme(titel: string) {
+    this.dataHandlerService.addTheme$(new Theme(null, titel)).subscribe( result => {
+      this.dataHandlerService.getAllThemes$().subscribe( themes => this.themes = themes);
+    });
+  }
 }

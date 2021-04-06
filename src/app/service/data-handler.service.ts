@@ -104,6 +104,16 @@ export class DataHandlerService {
   }
 
 
+  addTheme$(theme: Theme) : Observable<Theme>{
+    console.log(theme);
+    return this.http.post(`${environment.apiUrl}/Themes/`, theme.toJSON())
+      .pipe(catchError(this.handleError), map(Theme.fromJSON))
+      .pipe(catchError((err) => {
+          return throwError(err);
+        })
+      );
+  }
+
 
   getChapter$(chapterId: number) : Observable<Chapter>{
     return null;
@@ -142,9 +152,7 @@ export class DataHandlerService {
 
 
 
-  addTheme$(theme: Theme){
 
-  }
 
   getTheme$() : Observable<Theme>{
     return null;
