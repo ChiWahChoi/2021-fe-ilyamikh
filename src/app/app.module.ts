@@ -22,6 +22,8 @@ import { DeleteChapterComponent } from './dialog/delete-chapter/delete-chapter.c
 import {MatDatepicker, MatDatepickerModule} from '@angular/material/datepicker';
 import { EditThemeDialogComponent } from './dialog/edit-theme-dialog/edit-theme-dialog.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { HeaderComponent } from './views/header/header.component';
+import { CardComponent } from './views/header/card/card.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     EditChapterComponent,
     DeleteChapterComponent,
     EditThemeDialogComponent,
+    HeaderComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,

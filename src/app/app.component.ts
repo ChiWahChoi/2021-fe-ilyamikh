@@ -9,10 +9,15 @@ import {Chapter} from './models/Chapter';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+
   title = 'projectWA4';
   themes: Theme[];
   chapters: Chapter[];
   selectedTheme: Theme = null;
+
+  totalChapters: number;
+  totalCompletedChapters: number;
+  totalUncompletedChapters: number;
 
   constructor(private dataHandlerService: DataHandlerService) {
 

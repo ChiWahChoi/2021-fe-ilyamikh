@@ -20,6 +20,12 @@
   width: 30%;
 }
 
+.col-title:hover{
+  color: #FFFFFF;
+  background-color: #ff4081;
+  border-radius: 4px;
+}
+
 .col-sname{
   width: 15%;
 }
