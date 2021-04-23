@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Theme } from '../models/Theme';
 import {Chapter} from '../models/Chapter';
-import {BehaviorSubject, Observable, Subject, throwError} from 'rxjs';
+import {BehaviorSubject, Observable, of, Subject, throwError} from 'rxjs';
 import {Priority} from '../models/Priority';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
@@ -13,7 +13,6 @@ import {catchError, map, shareReplay, tap} from 'rxjs/operators';
 export class DataHandlerService {
 
   private _reloadChapters$ = new BehaviorSubject<boolean>(true);
-
   constructor(private http: HttpClient) {
   }
 
@@ -34,8 +33,6 @@ export class DataHandlerService {
       map((list: any[]): Chapter[] => list.map(Chapter.fromJSON))
     );
   }
-
-
 
   getAllThemes$() : Observable<Theme[]>{
 
@@ -103,7 +100,6 @@ export class DataHandlerService {
       );
   }
 
-
   addTheme$(theme: Theme) : Observable<Theme>{
     console.log(theme);
     return this.http.post(`${environment.apiUrl}/Themes/`, theme.toJSON())
@@ -114,60 +110,6 @@ export class DataHandlerService {
       );
   }
 
-
-  getChapter$(chapterId: number) : Observable<Chapter>{
-    return null;
-  }
-
-
-
-
-
-
-
-
-
-  /////////////////////////////////////////////////////
-
-
-
-
-  addPriority$(priority: Priority){
-
-  }
-
-  getPriority$() : Observable<Priority>{
-    return null;
-  }
-
-  deletePriority$(priorityId: number){
-
-  }
-
-  updatePriority$(priorityId: number){
-
-  }
-
-  ////////////////////////////////////////////////////////
-
-
-
-
-
-  getTheme$() : Observable<Theme>{
-    return null;
-  }
-
-
-
-
-
-  /////////////////////////////////////////////////////////////
-
-
-  //fillChaptersByTheme(theme: Theme){
-  //  this.chaptersSubject$.next(TestData.chapters.filter(element => element.theme === theme));
-  //}
 
   handleError(err: any): Observable<never> {
     let errorMessage: string;
@@ -182,18 +124,7 @@ export class DataHandlerService {
     return throwError(errorMessage);
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  getTotalCountOfChapters() : Observable<number>{
+    return of(10);
+  }
 }
