@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dataHandlerService.getChaptersByPriorityOrTheme$().subscribe(chapters => this.chapters = chapters);
+    this.updateTasksAndStats();
     this.dataHandlerService.getAllThemes$().subscribe(themes => this.themes = themes);
     this.onSelectTheme(null);
 
@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
 
   onSelectTheme(theme: Theme) {
     if (theme == null) {
-      this.dataHandlerService.getChaptersByPriorityOrTheme$().subscribe(chapters => this.chapters = chapters);
+      this.updateTasksAndStats();
     } else {
       this.selectedTheme = theme;
     }
@@ -41,13 +41,13 @@ export class AppComponent implements OnInit {
   onUpdateChapter(chapter: Chapter) {
 
     this.dataHandlerService.updateChapter$(chapter).subscribe(() => {
-      this.dataHandlerService.getChaptersByPriorityOrTheme$().subscribe(chapters => this.chapters = chapters);
+      this.updateTasksAndStats();
     });
   }
 
   onDeleteChapter(chapter: Chapter) {
     this.dataHandlerService.deleteChapter$(chapter).subscribe(() => {
-      this.dataHandlerService.getChaptersByPriorityOrTheme$().subscribe(chapters => this.chapters = chapters);
+      this.updateTasksAndStats();
     });
     window.location.reload();
   }
@@ -69,7 +69,7 @@ export class AppComponent implements OnInit {
 
   onAddChapter(chapter: Chapter) {
     this.dataHandlerService.addChapter$(chapter).subscribe(result => {
-      this.dataHandlerService.getChaptersByPriorityOrTheme$().subscribe(chapters => this.chapters = chapters);
+      this.updateTasksAndStats();
     });
   }
 
@@ -80,9 +80,17 @@ export class AppComponent implements OnInit {
   }
 
   updateTasksAndStats(){
-      this.totalCompletedChapters = this.chapters.filter(e => e._isFinished).length;
-      this.totalUncompletedChapters = this.chapters.filter(e => !e._isFinished).length;
-      this.totalChapters = this.chapters.length;
+
+    this.dataHandlerService.getChaptersByPriorityOrTheme$().subscribe(chapters => this.chapters = chapters);
+
+      zip(
+        this.dataHandlerService.getChaptersByPriorityOrTheme$()
+      ).subscribe(array => {
+        this.totalChapters = array[0].length;
+        this.totalCompletedChapters = array[0].filter(e => e._isFinished).length;
+        this.totalUncompletedChapters = array[0].filter(e => !e._isFinished).length;
+      });
+
   }
 
 
