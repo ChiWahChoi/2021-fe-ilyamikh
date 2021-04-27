@@ -35,6 +35,7 @@ export class AppComponent implements OnInit {
       this.updateTasksAndStats();
     } else {
       this.selectedTheme = theme;
+      this.dataHandlerService.getChaptersByTheme$(theme.id).subscribe(chapters => this.chapters = chapters);
     }
   }
 
