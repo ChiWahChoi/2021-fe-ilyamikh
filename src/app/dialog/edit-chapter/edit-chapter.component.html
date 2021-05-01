@@ -19,7 +19,7 @@
 <mat-form-field>
   <mat-label>Select subject</mat-label>
   <mat-select [(ngModel)]="tmpTheme">
-    <mat-option [value]="null">Geen vak</mat-option>
+   <mat-option [value]="tmpTheme">{{tmpTheme.title}}</mat-option>
     <mat-option *ngFor="let theme of themes" [value]="theme">
       {{theme.title}}
     </mat-option>
@@ -30,37 +30,37 @@
 <mat-form-field>
   <mat-label>Select prioriteit</mat-label>
   <mat-select [(ngModel)]="tmpPriority">
-    <mat-option [value]="null">Geen prioriteit</mat-option>
-    <mat-option *ngFor="let prio of priorities" [value]="prio">
-      {{prio.title}}
-    </mat-option>
-  </mat-select>
+    <mat-option [value]="tmpPriority">{{tmpPriority.title}}</mat-option>
+     <mat-option *ngFor="let prio of priorities" [value]="prio">
+       {{prio.title}}
+     </mat-option>
+   </mat-select>
 
-</mat-form-field>
-
-
-<mat-form-field>
-
-  <input matInput placeholder="Geef de datum op" #inputDate
-          readonly="true"
-            [matDatepicker]="picker"
-              [(ngModel)]="tmpDate"
-                (click)="picker.open()">
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-  <button *ngIf="inputDate.value.trim().length > 0"
-            mat-button matSuffix mat-icon-button aria-label="Clear"
-              (click)="tmpDate = null">
-      <mat-icon>clear</mat-icon>
-  </button>
-</mat-form-field>
+ </mat-form-field>
 
 
-<mat-dialog-actions>
-  <button
-    (click)="onConfirm()" [disabled]="inputTitle.value.trim().length==0"
-    color="primary"
-    mat-raised-button>  <!-- als titel empty is cancel knop is niet actief -->
+ <mat-form-field>
+
+   <input matInput placeholder="Geef de datum op" #inputDate
+           readonly="true"
+             [matDatepicker]="picker"
+               [(ngModel)]="tmpDate"
+                 (click)="picker.open()">
+   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+   <mat-datepicker #picker></mat-datepicker>
+   <button *ngIf="inputDate.value.trim().length > 0"
+             mat-button matSuffix mat-icon-button aria-label="Clear"
+               (click)="tmpDate = null">
+       <mat-icon>clear</mat-icon>
+   </button>
+ </mat-form-field>
+
+
+ <mat-dialog-actions>
+   <button
+     (click)="onConfirm()" [disabled]="inputTitle.value.trim().length==0"
+     color="primary"
+     mat-raised-button>  <!-- als titel empty is cancel knop is niet actief -->
     Save
   </button>
   <button (click)="onCancel()" mat-raised-button>Cancel</button>
