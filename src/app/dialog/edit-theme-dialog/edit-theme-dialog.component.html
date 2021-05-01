@@ -32,7 +32,9 @@
   </div>
 
   <div class="col-12 text-center">
-    <button mat-button class="red"
+    <button
+      *ngIf="canDelete()"
+          mat-button class="red"
             (click)="delete()"
              >
       Delete

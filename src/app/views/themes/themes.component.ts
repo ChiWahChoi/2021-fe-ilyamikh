@@ -4,6 +4,7 @@ import {Theme} from '../../models/Theme';
 import {EventEmitter} from '@angular/core';
 import {EditThemeDialogComponent} from '../../dialog/edit-theme-dialog/edit-theme-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
+import {OperType} from '../../dialog/OperType';
 
 @Component({
   selector: 'app-subjects',
@@ -56,7 +57,7 @@ export class ThemeComponent implements OnInit {
   }
 
   private openEditDialog(theme: Theme){
-    const dialogRef = this.dialog.open(EditThemeDialogComponent, {data: [theme.title, "Edit vak"], width: '400px'});
+    const dialogRef = this.dialog.open(EditThemeDialogComponent, {data: [theme.title, "Edit vak", OperType.EDIT], width: '400px'});
 
     dialogRef.afterClosed().subscribe( result => {
         if(result === 'delete'){
