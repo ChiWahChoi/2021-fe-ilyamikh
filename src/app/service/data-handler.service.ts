@@ -35,7 +35,6 @@ export class DataHandlerService {
   }
 
   getAllThemes$() : Observable<Theme[]>{
-
     return this.http.get(`${environment.apiUrl}/Themes/`).pipe(
       tap(console.log),
       shareReplay(1),
@@ -54,7 +53,6 @@ export class DataHandlerService {
   }
 
   updateChapter$(chapter: Chapter) : Observable<Chapter> {
-
     console.log(chapter.toJSON());
     return this.http.put(`${environment.apiUrl}/Chapters/${chapter.id}`, chapter.toJSON())
       .pipe(catchError(this.handleError), map(Chapter.fromJSON))
@@ -78,7 +76,6 @@ export class DataHandlerService {
       .pipe(tap(console.log), catchError(this.handleError));
   }
 
-
   updateTheme$(theme: Theme) : Observable<Chapter>{
     console.log(theme.toJSON());
     return this.http.put(`${environment.apiUrl}/Themes/${theme.id}`, theme.toJSON())
@@ -88,7 +85,6 @@ export class DataHandlerService {
         })
       );
   }
-
 
   addChapter$(chapter: Chapter) : Observable<Chapter> {
     console.log(chapter);
@@ -109,7 +105,6 @@ export class DataHandlerService {
         })
       );
   }
-
 
   handleError(err: any): Observable<never> {
     let errorMessage: string;

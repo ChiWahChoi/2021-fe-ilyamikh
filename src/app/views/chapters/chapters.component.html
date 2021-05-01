@@ -2,7 +2,9 @@
 
     <mat-toolbar class="card-header card-header-warning">
     <h4 class="card-title">Hoofdstukken om af te werken</h4>
-      <button mat-raised-button color="accent" (click)="openAddChapterDialog()">Hoofdstuk toevoegen</button>
+      <div class="text-right col-6">
+        <button mat-raised-button color="accent" (click)="openAddChapterDialog()">Hoofdstuk toevoegen</button>
+      </div>
     </mat-toolbar>
 
   <div class="card-body table-responsive" *ngIf=" chapters && chapters.length > 0">
