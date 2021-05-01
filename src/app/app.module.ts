@@ -18,7 +18,7 @@ import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatNativeDateModule, MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
-import { DeleteChapterComponent } from './dialog/delete-chapter/delete-chapter.component';
+import { DeleteChapterComponent } from './dialog/delete-dialog/delete-chapter.component';
 import {MatDatepicker, MatDatepickerModule} from '@angular/material/datepicker';
 import { EditThemeDialogComponent } from './dialog/edit-theme-dialog/edit-theme-dialog.component';
 import {MatToolbarModule} from '@angular/material/toolbar';

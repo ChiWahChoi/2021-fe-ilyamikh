@@ -7,6 +7,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {EditChapterComponent} from '../../dialog/edit-chapter/edit-chapter.component';
 import {MatDialog} from '@angular/material/dialog';
 import {Theme} from '../../models/Theme';
+import {OperType} from '../../dialog/OperType';
 
 
 @Component({
@@ -101,7 +102,7 @@ export class ChapterComponent implements OnInit {
 
 
   openEditChapterDialog(chapter: Chapter): void {
-    const dialogRef = this.dialog.open(EditChapterComponent, {data: [chapter, 'Edit chapter'], autoFocus: false});
+    const dialogRef = this.dialog.open(EditChapterComponent, {data: [chapter, 'Edit chapter', OperType.EDIT], autoFocus: false});
     dialogRef.afterClosed().subscribe(result => {
 
       if(result === 'complete'){
@@ -137,7 +138,7 @@ export class ChapterComponent implements OnInit {
     const chapter = new Chapter(null, '', false, null, null);
     console.log(chapter);
     console.log("in open add chapter dialog");
-    const dialogRef = this.dialog.open(EditChapterComponent, {data: [chapter, 'Hoofdstuk toevoegen']});
+    const dialogRef = this.dialog.open(EditChapterComponent, {data: [chapter, 'Hoofdstuk toevoegen', OperType.ADD]});
 
     dialogRef.afterClosed().subscribe(result => {
       if(result){

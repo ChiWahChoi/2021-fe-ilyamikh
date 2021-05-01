@@ -19,7 +19,7 @@
 <mat-form-field>
   <mat-label>Select subject</mat-label>
   <mat-select [(ngModel)]="tmpTheme">
-   <mat-option [value]="tmpTheme">{{tmpTheme.title}}</mat-option>
+   <mat-option [value]="null">Geen vak</mat-option>
     <mat-option *ngFor="let theme of themes" [value]="theme">
       {{theme.title}}
     </mat-option>
@@ -30,7 +30,7 @@
 <mat-form-field>
   <mat-label>Select prioriteit</mat-label>
   <mat-select [(ngModel)]="tmpPriority">
-    <mat-option [value]="tmpPriority">{{tmpPriority.title}}</mat-option>
+    <mat-option [value]="null">Geen prioriteit</mat-option>
      <mat-option *ngFor="let prio of priorities" [value]="prio">
        {{prio.title}}
      </mat-option>
@@ -64,9 +64,9 @@
     Save
   </button>
   <button (click)="onCancel()" mat-raised-button>Cancel</button>
-  <button mat-button *ngIf="!chapter._isFinished" (click)="complete()">Finish chapter</button>
-  <button mat-button *ngIf="chapter._isFinished" (click)="activate()">Start chapter</button>
-  <button mat-button class="red" (click) = "delete()">Delete chapter</button>
+  <button mat-button *ngIf="!chapter._isFinished && canDelete()" (click)="complete()">Finish chapter</button>
+  <button mat-button *ngIf="chapter._isFinished && canDelete()" (click)="activate()">Start chapter</button>
+  <button *ngIf="canDelete()" mat-button class="red" (click) = "delete()">Delete chapter</button>
 </mat-dialog-actions>
 
 

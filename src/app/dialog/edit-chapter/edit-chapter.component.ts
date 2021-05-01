@@ -4,7 +4,8 @@ import {DataHandlerService} from '../../service/data-handler.service';
 import {Chapter} from '../../models/Chapter';
 import {Theme} from '../../models/Theme';
 import {Priority} from '../../models/Priority';
-import {DeleteChapterComponent} from '../delete-chapter/delete-chapter.component';
+import {DeleteChapterComponent} from '../delete-dialog/delete-chapter.component';
+import {OperType} from '../OperType';
 
 @Component({
   selector: 'app-edit-chapter',
@@ -13,13 +14,15 @@ import {DeleteChapterComponent} from '../delete-chapter/delete-chapter.component
 })
 export class EditChapterComponent implements OnInit {
 
+
   constructor(
     private dialogRef: MatDialogRef<EditChapterComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: [Chapter, string],
+    @Inject(MAT_DIALOG_DATA) private data: [Chapter, string, OperType],
     private dataHandler :DataHandlerService,
     private dialog: MatDialog
   ) { }
 
+  operType: OperType;
   dialogTitle: string;
   chapter: Chapter;
   themes: Theme[];
@@ -34,6 +37,8 @@ export class EditChapterComponent implements OnInit {
 
     this.chapter = this.data[0];
     this.dialogTitle = this.data[1];
+    this.operType = this.data[2];
+
 
     this.tmpTitle = this.chapter._title;
 
@@ -84,5 +89,13 @@ export class EditChapterComponent implements OnInit {
 
   activate() {
     this.dialogRef.close('activate')
+  }
+
+  canDelete(): boolean {
+    return this.operType === OperType.EDIT;
+  }
+
+  canActivateDesactivate(): boolean {
+    return this.operType === OperType.EDIT;
   }
 }

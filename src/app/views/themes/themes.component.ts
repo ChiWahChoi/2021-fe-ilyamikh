@@ -53,7 +53,6 @@ export class ThemeComponent implements OnInit {
   showEditIcon(index: number) {
     this.indexMouseMove = index;
     console.log(index);
-
   }
 
   private openEditDialog(theme: Theme){
