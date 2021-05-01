@@ -47,12 +47,11 @@ export class AppComponent implements OnInit {
 
   onDeleteChapter(chapter: Chapter) {
     this.dataHandlerService.deleteChapter$(chapter).subscribe(() => {
-      this.updateTasksAndStats();
+      this.dataHandlerService.getChaptersByPriorityOrTheme$().subscribe(chapters => this.chapters = chapters);
     });
-    window.location.reload();
   }
 
-  onDeletetheme(theme: Theme) {
+  onDeleteTheme(theme: Theme) {
     this.dataHandlerService.deleteTheme$(theme.id).subscribe(e => {
       this.dataHandlerService.getAllThemes$().subscribe( themes => this.themes = themes);
     });
@@ -77,7 +76,6 @@ export class AppComponent implements OnInit {
   }
 
   updateTasksAndStats(){
-    this.dataHandlerService.getChaptersByPriorityOrTheme$().subscribe(chapters => this.chapters = chapters);
       zip(
         this.dataHandlerService.getChaptersByPriorityOrTheme$()
       ).subscribe(array => {
@@ -85,7 +83,7 @@ export class AppComponent implements OnInit {
         this.totalCompletedChapters = array[0].filter(e => e._isFinished).length;
         this.totalUncompletedChapters = array[0].filter(e => !e._isFinished).length;
       });
-
+    this.dataHandlerService.getChaptersByPriorityOrTheme$().subscribe(chapters => this.chapters = chapters);
   }
 
 

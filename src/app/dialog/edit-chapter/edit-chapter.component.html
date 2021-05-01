@@ -63,10 +63,20 @@
      mat-raised-button>  <!-- als titel empty is cancel knop is niet actief -->
     Save
   </button>
-  <button (click)="onCancel()" mat-raised-button>Cancel</button>
-  <button mat-button *ngIf="!chapter._isFinished && canDelete()" (click)="complete()">Finish chapter</button>
-  <button mat-button *ngIf="chapter._isFinished && canDelete()" (click)="activate()">Start chapter</button>
-  <button *ngIf="canDelete()" mat-button class="red" (click) = "delete()">Delete chapter</button>
+  <button (click)="onCancel()"
+          mat-raised-button>Cancel</button>
+
+  <button mat-button
+            *ngIf="!chapter._isFinished && canDelete()"
+              (click)="complete()">Finish chapter</button>
+
+  <button mat-button
+            *ngIf="chapter._isFinished && canDelete()"
+              (click)="activate()">Start chapter</button>
+
+  <button *ngIf="canDelete()"
+            mat-button class="red"
+              (click) = "delete()">Delete chapter</button>
 </mat-dialog-actions>
 
 

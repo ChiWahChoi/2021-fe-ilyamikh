@@ -66,7 +66,7 @@ export class DataHandlerService {
   deleteChapter$(chapter: Chapter): Observable<Chapter>{
     return this.http
       .delete(`${environment.apiUrl}/Chapters/${chapter.id}`)
-      .pipe(catchError(this.handleError), map(Chapter.fromJSON))
+      .pipe(catchError(this.handleError))
       .pipe(tap(console.log), catchError(this.handleError));
   }
 

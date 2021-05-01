@@ -78,7 +78,7 @@ export class EditChapterComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.dialogRef.close('delete'); // нажали удалить
+        this.dialogRef.close('delete');
       }
     });
   }
