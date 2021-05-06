@@ -8,6 +8,6 @@ This is an angular project for study purposes
 15/02/2021 Moved to classroom repo
 
 <hr>
-<p2>Backend: https://github.com/pl77711/2021-be-ilyamikh</p2>
+**Backend: https://github.com/pl77711/2021-be-ilyamikh
 
 
