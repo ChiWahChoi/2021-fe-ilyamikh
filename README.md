@@ -1,13 +1,21 @@
-# ProjectWA4
+# Front-end of To-do app for study purposes
 
-This is an angular project for study purposes
+## How to
+Use following commands in your VS Code Terminal to clone;
 
-11/02/2021 initializing project
-13/02/2021 I decided to use material-dashboard template, because it fits my requirements for "studies planning tool" application
-          https://www.creative-tim.com/product/material-dashboard is the template I used
-15/02/2021 Moved to classroom repo
+```bash
+~$ git clone https://github.com/Web-IV/2021-fe-ilyamikh.git
+~$ cd 2021-fe-ilyamikh-master
+~$ npm start
+```
+
+Open on http://localhost:4200/
+
+
 
 ## Backend: 
 https://github.com/pl77711/2021-be-ilyamikh
+
+
 
 
