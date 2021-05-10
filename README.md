@@ -11,7 +11,7 @@ Use following commands in your VS Code Terminal to clone;
 
 Open on http://localhost:4200/
 
-
+![](WA4.gif)
 
 ## Backend: 
 https://github.com/pl77711/2021-be-ilyamikh
